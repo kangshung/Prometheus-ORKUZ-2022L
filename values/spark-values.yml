@@ -1,0 +1,13 @@
+serviceAccounts:
+  spark:
+    name: spark-sa
+podMonitor:
+  enable: true
+webhook:
+  enable: true
+metrics:
+  prefix: "damian"
+sparkJobNamespace: spark
+rbac:
+  createClusterRole: true
+  createRole: true
