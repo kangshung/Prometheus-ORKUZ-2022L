@@ -36,3 +36,6 @@ spec:
     volumeMounts:
       - name: "test-volume"
         mountPath: "/tmp"
+
+
+        driver.javaOptions: "-Divy.cache.dir=/tmp/ivy -Divy.home=/tmp/ivy -Dlog4j.configuration=file:///var/data/log4j/log4j.properties"

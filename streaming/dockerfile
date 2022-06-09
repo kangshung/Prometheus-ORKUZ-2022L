@@ -1,0 +1,6 @@
+FROM gcr.io/datamechanics/spark:3.2.1-latest
+
+ENV PYSPARK_MAJOR_PYTHON_VERSION=3
+WORKDIR /opt/application/
+
+COPY streaming.py .

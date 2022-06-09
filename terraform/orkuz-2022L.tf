@@ -28,7 +28,7 @@ resource "azurerm_kubernetes_cluster" "aks-orkuz" {
     vm_size    = "Standard_B2s"
 
     tags = {
-      pool = "default-wtorek"
+      pool = "Standard_B2s-2x"
     }
   }
 
@@ -44,7 +44,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "additional" {
   node_count            = 1
 
   tags = {
-    pool = "additional-wtorek"
+    pool = "Standard_F2s_v2-1x"
   }
 }
 
