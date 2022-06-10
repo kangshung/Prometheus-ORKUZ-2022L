@@ -1,6 +1,16 @@
 prometheus:
   service:
     type: LoadBalancer
+  prometheusSpec:
+    serviceMonitorSelector:
+      matchLabels:
+        release: prom
+    serviceMonitorNamespaceSelector: {}
+    podMonitorSelector:
+      matchLabels:
+        type: spark-operator
+    podMonitorNamespaceSelector: {}
+
 alertmanager:
   service:
     type: LoadBalancer

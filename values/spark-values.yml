@@ -1,13 +1,32 @@
 serviceAccounts:
   spark:
     name: spark-sa
-podMonitor:
-  enable: true
+sparkJobNamespace: spark
 webhook:
   enable: true
-metrics:
-  prefix: "damian"
-sparkJobNamespace: spark
 rbac:
   createClusterRole: true
   createRole: true
+metrics:
+  # -- Enable prometheus metric scraping
+  enable: true
+  # -- Metrics port
+  port: 10254
+  # -- Metrics port name
+  portName: metrics
+  # -- Metrics serving endpoint
+  endpoint: /metrics
+  # -- Metric prefix, will be added to all exported metrics
+  prefix: "orkuz_"
+podMonitor:
+  # -- If enabled, a pod monitor for operator's pod will be submitted. Note that prometheus metrics should be enabled as well.
+  enable: true
+  # -- Pod monitor labels
+  labels:
+    type: spark-operator
+  # -- The label to use to retrieve the job name from
+  jobLabel: spark-operator-podmonitor
+  # -- Prometheus metrics endpoint properties. `metrics.portName` will be used as a port
+  podMetricsEndpoint:
+    scheme: http
+    interval: 5s
