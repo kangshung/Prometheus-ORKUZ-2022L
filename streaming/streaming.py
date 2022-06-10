@@ -6,10 +6,9 @@ spark = SparkSession \
     .appName("Structured_App_Demo") \
     .getOrCreate()
 
-# po co komu security lol, klucz juz dawno zrotowany ;)
+# po co komu security, klucz juz dawno zrotowany ;)
 spark.conf.set("fs.azure.account.key.testquhqwdiuq.blob.core.windows.net",
                "dwg3C+KEGpBHTG1ME6/QIzXNY3VtShHytaDH28kOCkw3ah+AsNXbg4jJ6usoymcXRZNsuro8v8KY+AStrwcJ9A==")
-
 
 schema = StructType([
     StructField("Username", StringType(), True),
@@ -20,9 +19,9 @@ schema = StructType([
 
 df = spark.readStream \
     .format("csv") \
-    .option("header","true")\
-    .schema(schema)\
-    .option("sep", ";")\
+    .option("header", "true") \
+    .schema(schema) \
+    .option("sep", ";") \
     .load("wasbs://orkuz@testquhqwdiuq.blob.core.windows.net/spark_input")
 
 df.printSchema()
