@@ -4,13 +4,12 @@ prometheus:
   prometheusSpec:
     serviceMonitorSelector:
       matchLabels:
-        release: prom
+        demo-spark: streaming
     serviceMonitorNamespaceSelector: {}
     podMonitorSelector:
       matchLabels:
         type: spark-operator
     podMonitorNamespaceSelector: {}
-
 alertmanager:
   service:
     type: LoadBalancer

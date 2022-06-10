@@ -14,6 +14,9 @@ spec:
   sparkConf:
     "spark.ui.prometheus.enabled": "true"
     "spark.sql.shuffle.partitions": "4"
+    "spark.kubernetes.driver.annotation.prometheus.io/scrape": "true"
+    "spark.kubernetes.driver.annotation.prometheus.io/path": "/metrics/executors/prometheus/"
+    "spark.kubernetes.driver.annotation.prometheus.io/port": "4040 "
   restartPolicy:
     type: Never
     onFailureRetries: 1
@@ -28,3 +31,6 @@ spec:
     cores: 1
     instances: 1
     memory: "512m"
+  monitoring:
+    exposeDriverMetrics: true
+    exposeExecutorMetrics: true

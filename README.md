@@ -4,7 +4,9 @@ helm upgrade -i prom ./kube-prometheus-stack -f ./values/prometheus-values.yml -
 
 helm upgrade -i spark ./spark-operator -f ./values/spark-values.yml -n spark --create-namespace
 
-kubectl apply -f .\spark-demo.yaml
+kubectl apply -f .\streaming\streaming-servicemonitor.yml   
+
+kubectl apply -f .\streaming\streaming-demo-application.yaml
 
 
 aplikacja sparkowa readstream blob 1 --> czeka na plik w formacie X --> dostaje plik to przelicza wordcount --> zapisuje writestream blob 2

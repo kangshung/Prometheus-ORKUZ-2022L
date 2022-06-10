@@ -6,8 +6,9 @@ spark = SparkSession \
     .appName("Structured_App_Demo") \
     .getOrCreate()
 
+# po co komu security lol, klucz juz dawno zrotowany ;)
 spark.conf.set("fs.azure.account.key.testquhqwdiuq.blob.core.windows.net",
-               "08yTLzJw8v/MYy3oYh4PU1E64oEj3pzZLFAOwy1kfk+mlUnUN2LOmm7B+nk4TsDoSWOHxNgzgSqO+AStysirXQ==")
+               "dwg3C+KEGpBHTG1ME6/QIzXNY3VtShHytaDH28kOCkw3ah+AsNXbg4jJ6usoymcXRZNsuro8v8KY+AStrwcJ9A==")
 
 
 schema = StructType([
@@ -22,14 +23,8 @@ df = spark.readStream \
     .option("header","true")\
     .schema(schema)\
     .option("sep", ";")\
-    .load("wasbs://husky@testquhqwdiuq.blob.core.windows.net/spark_input")
+    .load("wasbs://orkuz@testquhqwdiuq.blob.core.windows.net/spark_input")
 
 df.printSchema()
 
 df.writeStream.format("console").outputMode("append").start().awaitTermination()
-
-# df.writeStream \
-#     .format("parquet") \
-#     .outputMode("append") \
-#     .option("checkpointLocation", "/tmp/delta/events/_checkpoints/") \
-#     .start("path/to/destination/dir")

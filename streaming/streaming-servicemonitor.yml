@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: demo-spark-servicemonitor
+  namespace: spark
+  labels:
+    demo-spark: streaming
+spec:
+  selector:
+    matchLabels:
+      sparkoperator.k8s.io/app-name: spark-demo
+  endpoints:
+    - port: spark-driver-ui-port
+      path: /metrics/executors/prometheus/
+      interval: 5s
